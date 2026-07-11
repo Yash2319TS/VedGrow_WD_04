@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skyline — Weather Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-layer" id="bgLayer"></div>
+
+    <div class="console">
+      <!-- Header / Search -->
+      <header class="console-header">
+        <div class="brand">
+          <span class="brand-mark">◍</span>
+          <span class="brand-name">SKYLINE</span>
+        </div>
+
+        <div class="search-wrap">
+          <input
+            type="text"
+            id="cityInput"
+            class="search-input"
+            placeholder="Search a city…"
+            autocomplete="off"
+          />
+          <ul id="suggestions" class="suggestions hidden"></ul>
+        </div>
+
+        <button
+          id="unitToggle"
+          class="unit-toggle"
+          aria-label="Toggle temperature unit"
+        >
+          <span class="unit-option active" data-unit="C">°C</span>
+          <span class="unit-divider">/</span>
+          <span class="unit-option" data-unit="F">°F</span>
+        </button>
+      </header>
+
+      <!-- Favourites row -->
+      <div id="favouritesRow" class="favourites-row"></div>
+
+      <!-- Status / error -->
+      <div id="statusMsg" class="status-msg hidden"></div>
+
+      <!-- Main content -->
+      <main id="mainContent" class="main-content hidden">
+        <!-- Hero current weather -->
+        <section class="hero-card">
+          <div class="hero-top">
+            <div class="hero-place">
+              <h1 id="cityName">—</h1>
+              <p id="dateTime">—</p>
+            </div>
+            <button id="favBtn" class="fav-btn" aria-label="Save as favourite">
+              ☆
+            </button>
+          </div>
+
+          <div class="hero-main">
+            <img id="weatherIcon" class="weather-icon" src="" alt="" />
+            <div class="temp-block">
+              <span id="currentTemp" class="temp-value">—</span>
+              <span class="temp-unit" id="tempUnitLabel">°C</span>
+            </div>
+            <div class="condition-block">
+              <p id="conditionText" class="condition-text">—</p>
+              <p id="feelsLike" class="feels-like">Feels like —</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Instrument readouts -->
+        <section class="readout-grid">
+          <div class="readout-tile">
+            <span class="readout-label">HUMIDITY</span>
+            <span class="readout-value" id="humidityValue">—</span>
+            <span class="readout-unit">%RH</span>
+          </div>
+          <div class="readout-tile">
+            <span class="readout-label">WIND SPEED</span>
+            <span class="readout-value" id="windValue">—</span>
+            <span class="readout-unit" id="windUnit">m/s</span>
+          </div>
+          <div class="readout-tile">
+            <span class="readout-label">UV INDEX</span>
+            <span class="readout-value" id="uvValue">—</span>
+            <span class="readout-unit" id="uvTag">—</span>
+          </div>
+          <div class="readout-tile">
+            <span class="readout-label">PRESSURE</span>
+            <span class="readout-value" id="pressureValue">—</span>
+            <span class="readout-unit">hPa</span>
+          </div>
+        </section>
+
+        <!-- 5-day forecast -->
+        <section class="forecast-section">
+          <h2 class="forecast-title">5-Day Forecast</h2>
+          <div class="forecast-strip" id="forecastStrip"></div>
+        </section>
+      </main>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state">
+        <p class="empty-glyph">◌</p>
+        <p>Search for a city to bring its sky online.</p>
+      </div>
+
+      <footer class="console-footer">
+        <span id="apiKeyNotice"
+          >⚠ Add your OpenWeatherMap API key in <code>script.js</code> to
+          begin.</span
+        >
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
